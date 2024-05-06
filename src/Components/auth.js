@@ -10,8 +10,7 @@ function Auth() {
         <>
           <button
             className="bg-black text-white font-bold py-2 px-4 rounded-full relative overflow-hidden hover:shadow-white transition-shadow duration-300"
-            style={{ width: "120px", marginRight: "25px" }}
-            onClick={logout}
+            style={{ width: "120px", marginRight: "2px" }}
           >
             Favorites
           </button>

@@ -3,6 +3,8 @@ import { Combobox, Transition } from "@headlessui/react";
 import { useNavigate } from "react-router-dom";
 import jsonp from "jsonp";
 
+import "./../css/style.css";
+
 let resultArray = [];
 
 function Search(props) {
@@ -58,7 +60,7 @@ function Search(props) {
     <div>
       <Combobox value={selected} onChange={selectedHendler}>
         <div className="relative mt-1 lg:ml-40">
-          <div className="relative w-full max-w-[500px] cursor-default overflow-hidden rounded-[4px] bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
+          <div className="ruko relative max-w-[500px] cursor-default overflow-hidden rounded-[9px] bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-teal-300 sm:text-sm">
             <div
               className={`flex items-center space-x-4 py-3 pl-3 pr-3 text-sm leading-5 text-gray-700 focus:ring-0 ${props.className}`}
             >
