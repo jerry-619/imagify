@@ -10,10 +10,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
     <KindeProvider
-      clientId="3ab5bb85682549019656ddcae1056def"
-      domain="https://imagify.kinde.com"
-      redirectUri="http://localhost:3000"
-      logoutUri="http://localhost:3000"
+      clientId={process.env.REACT_APP_KINDE_CLIENT_ID}
+      domain={process.env.REACT_APP_DOMAIN}
+      redirectUri={process.env.REACT_APP_REDIRECT}
+      logoutUri={process.env.REACT_APP_LOGOUT}
     >
       <App />
     </KindeProvider>

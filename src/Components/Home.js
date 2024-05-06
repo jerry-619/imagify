@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 import SearchBox from "./SearchBox";
 import Auth from "./auth";
 
