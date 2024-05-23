@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import SearchBox from "./SearchBox";
-import Auth from "./auth";
+import Auth from "./Auth";
 
 import bg from './../image/IMG_0939.MP4';
 import "./../css/style.css";

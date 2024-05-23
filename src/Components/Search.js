@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 function Search() {
   // State variables to manage image data, pagination, loading state, etc.
   const [imageData, setImageData] = useState([]);
-  const [totlePage, setTotlePage] = useState(1);  // Typo: should be 'totalPage' instead of 'totlePage'
+  const [totlePage, setTotlePage] = useState(1);
   const [total, setTotal] = useState(0);
   const [error, setError] = useState(false);
   const [isLoading, setLoading] = useState(false);

@@ -20,57 +20,6 @@
   z-index: 1;
 }
 
-.popup-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-  z-index: 9999; /* Set a high z-index to ensure the popup appears on top */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.popup-content {
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.popup-image {
-  width: 100px; /* Adjust size as needed */
-  height: 100px; /* Adjust size as needed */
-  border-radius: 50%; /* To create a circular image */
-  margin-right: 20px;
-}
-
-.popup-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.popup-form input {
-  margin-bottom: 10px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.popup-form button {
-  padding: 8px 12px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.popup-form button:hover {
-  background-color: #0056b3;
-}
 
 input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;

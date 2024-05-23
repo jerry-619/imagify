@@ -1,8 +1,11 @@
+import React, { useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState, useEffect } from "react";
-
-import { FaBookmark } from "react-icons/fa";
+import { Fragment } from "react";
 import { IoDownload } from "react-icons/io5";
+import Saved from "./Saved";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function Modal(props) {
   const [downloadUrl, setDownloadUrl] = useState(null);
 
@@ -147,17 +150,25 @@ export default function Modal(props) {
                         <div className="my-5 flex gap-3">
                           {/* Download button */}
                           <button
-                            className="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                            onClick={handleDownload}
+                            className="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 font-medium text-black hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                            onClick={() => {
+                              handleDownload();
+                              toast.info("Download started!",{
+                                position: "top-center",
+                                autoClose: 1000,
+                                style: { backgroundColor: "grey", color: "white" },
+                                hideProgressBar: true,
+                                closeOnClick: true,
+                                pauseOnHover: false,
+                                draggable: false,
+                              }); // Show toast message when download starts
+                            }}
                           >
                             <IoDownload className="w-5 h-5 mr-1" /> Download
                           </button>
 
                           {/* Save button */}
-                          <button 
-                            className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                          > <FaBookmark className="w-5 h-5" />
-                          </button>
+                          <Saved image={props.image} />
                         </div>
                       </div>
                     </div>
@@ -170,6 +181,7 @@ export default function Modal(props) {
           )}
         </Dialog>
       </Transition>
+      <ToastContainer />
     </>
   );
 }
