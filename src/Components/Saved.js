@@ -1,5 +1,4 @@
-// saved.js
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 import { FaBookmark } from "react-icons/fa";
 import { toast } from 'react-toastify';
@@ -8,16 +7,44 @@ import axios from 'axios';
 
 function Saved({ image }) {
   const { user } = useKindeAuth();
-  console.log('User:', user); 
+  const [savedImages, setSavedImages] = useState([]);
+
+  useEffect(() => {
+    if (user) {
+      // Fetch the saved images for the current user
+      axios.get(`http://localhost:6900/api/savedImages/${user.id}`)
+        .then((response) => {
+          setSavedImages(response.data);
+        })
+        .catch((error) => {
+          console.error("Error fetching saved images:", error);
+        });
+    }
+  }, [user]);
+
+  const isImageSaved = savedImages.some(savedImage => savedImage.imageUrl === image.urls.full);
+
   const handleButtonClick = async () => {
     if (user) {
+      if (isImageSaved) {
+        toast.info("Image already saved!", {
+          position: "top-center",
+          autoClose: 4000,
+          style: { backgroundColor: "grey", color: "black" },
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+        });
+        return;
+      }
       try {
         await axios.post('http://localhost:6900/api/saveImage', {
           userId: user.id,
           imageUrl: image.urls.full,
         });
 
-        toast.info("Saved!", {
+        toast.info("Image Saved!", {
           position: "top-center",
           autoClose: 4000,
           style: { backgroundColor: "green", color: "white" },
@@ -26,6 +53,7 @@ function Saved({ image }) {
           pauseOnHover: false,
           draggable: false,
         });
+        setSavedImages([...savedImages, { imageUrl: image.urls.full }]);
       } catch (error) {
         console.log(error)
         toast.error("Error saving image.", {

@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Imagify",
+  "name": "Imagify: Pixel Perfect, Every Time.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -9,6 +9,11 @@
     },
     {
       "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "apple-icon.png",
       "type": "image/png",
       "sizes": "192x192"
     },

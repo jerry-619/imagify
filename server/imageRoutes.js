@@ -2,19 +2,18 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-// Define the schema and model for saved images
+// Define the schema and model for saved images with timestamps
 const savedImageSchema = new mongoose.Schema({
-  userId: String,
-  imageUrl: String,
-  description: String,
-});
+  userId: { type: String, required: true },
+  imageUrl: { type: String, required: true },
+}, { timestamps: true }); // Ensure timestamps are enabled
 
 const SavedImage = mongoose.model('SavedImage', savedImageSchema);
 
 // Endpoint to save an image
 router.post('/saveImage', async (req, res) => {
-  const { userId, imageUrl, description } = req.body;
-  const newSavedImage = new SavedImage({ userId, imageUrl, description });
+  const { userId, imageUrl } = req.body;
+  const newSavedImage = new SavedImage({ userId, imageUrl });
 
   try {
     await newSavedImage.save();
@@ -30,7 +29,7 @@ router.get('/savedImages/:userId', async (req, res) => {
   const userId = req.params.userId;
 
   try {
-    const savedImages = await SavedImage.find({ userId });
+    const savedImages = await SavedImage.find({ userId }).sort({ createdAt: -1 });
     res.status(200).json(savedImages);
   } catch (error) {
     console.error('Error fetching saved images:', error);
