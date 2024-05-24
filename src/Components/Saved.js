@@ -12,7 +12,7 @@ function Saved({ image }) {
   useEffect(() => {
     if (user) {
       // Fetch the saved images for the current user
-      axios.get(`http://localhost:6900/api/savedImages/${user.id}`)
+      axios.get(`https://imagify-ceoe.onrender.com/api/savedImages/${user.id}`)
         .then((response) => {
           setSavedImages(response.data);
         })
@@ -39,7 +39,7 @@ function Saved({ image }) {
         return;
       }
       try {
-        await axios.post('http://localhost:6900/api/saveImage', {
+        await axios.post('https://imagify-ceoe.onrender.com//api/saveImage', {
           userId: user.id,
           imageUrl: image.urls.full,
         });
