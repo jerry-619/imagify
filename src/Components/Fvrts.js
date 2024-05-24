@@ -22,7 +22,7 @@ function Fvrts() {
   useEffect(() => {
     if (user) {
       axios
-        .get(`http://localhost:6900/api/savedImages/${user.id}`)
+        .get(`https://imagify-ceoe.onrender.com/api/savedImages/${user.id}`)
         .then((response) => {
           setSavedImages(response.data);
           setDisplayedImages(response.data.slice(0, imagesPerPage));
